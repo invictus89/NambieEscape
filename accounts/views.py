@@ -23,11 +23,8 @@ bot_token = settings.TELEGRAM_BOT_TOKEN
 redirect_url = settings.TELEGRAM_LOGIN_REDIRECT_URL
 
 api_url = f'https://api.telegram.org/bot{bot_token}/'
-webhook_url = 'https://78ca0ad2.ngrok.io/accounts/'
-my_url = f'{api_url}/setWebhook?url={webhook_url}/'
 
-
-domain = '78ca0ad2.ngrok.io/accounts/intro/'
+domain = '365b6d7e.ngrok.io/accounts/intro/'
 invitemgs = f'I hope you to join our Webpage\n{domain}'
 
 @csrf_exempt
@@ -39,28 +36,46 @@ def telegram(request, token):
     text = msg.get('text')
     user = User.objects.filter(tel_id=id)
     if user.exists():
+        user = user.first()
         msg=''
-        if text=='today' or text=='오늘':
-            d = datetime.today()
-            month = d.month
-            day = d.day
-        elif len(text)==5:
-            print(len(text))
-            [month, day]=text.split('/')
+        if text=='소식' or text=='news' or text=='뉴스':
+            categorys = user.inter_cate.all()
+            msg+='◎키워드 뉴스\n'
+            for category in categorys:
+                keywords = category.keyword_set.all()
+                msg+=f'>{category.name}\n'
+                for keyword in keywords:
+                    keynewses = keyword.keynews_set.all()
+                    msg = msg + f'  {keyword.name}\n'
+                    for keynews in keynewses:
+                        msg = msg+f'      {keynews.title}\n'
+            msg+='\n◎랭킹 뉴스\n'
+            for category in categorys:
+                ranknewses = category.ranknews_set.all()
+                msg+=f'>{category.name}\n'
+                for ranknews in ranknewses:
+                    msg = msg+f'  {ranknews.title}\n'
+        else:
+            if text=='today' or text=='오늘':
+                d = datetime.today()
+                month = d.month
+                day = d.day
+            else :
+                [month, day]=text.split('/')
+                try:
+                    month = int(text[0:2])
+                    day = int(text[3:5])
+                except:
+                    pass
             try:
-                month = int(text[0:2])
-                day = int(text[3:5])
+                events = user.event_set.filter(uploaded_at__month=month, uploaded_at__day=day)
+                length = len(events)
+                if length==0:
+                    msg+=f'{text}은 아무런 일정이 없습니다.'
+                for event in events:
+                    msg = msg + f'{event.title}({event.uploaded_at.year}), '
             except:
-                pass
-        try:
-            events = user.first().event_set.filter(uploaded_at__month=month, uploaded_at__day=day)
-            length = len(events)
-            if length==0:
-                msg+=f'{text}은 아무런 일정이 없습니다.'
-            for event in events:
-                msg = msg + f'{event.title}({event.uploaded_at.year}), '
-        except:
-            msg="ex) '06/26' 혹은 '오늘' 의 형태로 입력해 주세요."
+                msg="ex) '06/26'의 형식 혹은 '오늘', '뉴스' 으로 입력해 주세요."
     else:
         msg=invitemgs
     requests.get(f'https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={id}&text={msg}')
