@@ -1,0 +1,1 @@
+web: gunicorn nambie.wsgi --log-file -

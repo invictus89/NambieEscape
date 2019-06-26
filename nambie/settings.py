@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+from decouple import config
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pmv#bdjht^5!2xe=2gltj!r40kgojpg-za4blhvnnum^!m17rs'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['7c642d78.ngrok.io']
+# ALLOWED_HOSTS = ['7c642d78.ngrok.io']
 
 TELEGRAM_BOT_NAME = 'NambieBot' # 'django_telegram_login_bot'
 TELEGRAM_BOT_TOKEN = '882635514:AAGU-Ian51dQAUP9W7WQAdL3dvEHQIn973Y'
@@ -145,3 +145,6 @@ AUTH_USER_MODEL='accounts.User'
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+import django_heroku
+django_heroku.settings(locals())
