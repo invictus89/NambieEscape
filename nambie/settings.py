@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-TELEGRAM_BOT_NAME = 'Nambie_Bot' # 'django_telegram_login_bot'
+TELEGRAM_BOT_NAME = 'NambieBot' # 'django_telegram_login_bot'
 TELEGRAM_BOT_TOKEN = '882635514:AAGU-Ian51dQAUP9W7WQAdL3dvEHQIn973Y'
 TELEGRAM_LOGIN_REDIRECT_URL = '' # 'http://127.0.0.1:8000'
 
