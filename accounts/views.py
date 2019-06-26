@@ -26,7 +26,7 @@ redirect_url = settings.TELEGRAM_LOGIN_REDIRECT_URL
 
 api_url = f'https://api.telegram.org/bot{bot_token}/'
 
-domain = '365b6d7e.ngrok.io/accounts/intro/'
+domain = 'nambie.herokuapp.com/accounts/'
 invitemgs = f'I hope you to join our Webpage\n{domain}'
 
 d = datetime.today()
