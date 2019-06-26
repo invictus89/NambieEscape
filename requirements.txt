@@ -32,7 +32,6 @@ matplotlib==3.1.0
 node==0.9.23
 numpy==1.16.4
 oauthlib==3.0.1
-object-detection==0.1
 odict==1.6.2
 parso==0.4.0
 pickleshare==0.7.5
