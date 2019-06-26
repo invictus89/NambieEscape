@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>{{request.user}}님의 관심 등록 정보입니다.</p>
+<hr>
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for category in categorys %}
+        <p>
+        {% if category in request.user.inter_cate.all %}
+            <input data-id="{{ category.pk }}" class="inter-box" type="checkbox" value="{{category.pk}}" checked>{{category}}
+        {% else %}
+            <input data-id="{{ category.pk }}" class="inter-box" type="checkbox" value="{{category.pk}}" >{{category}}
+        {% endif %}
+        </p>
+    {% endfor %}
+</form>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>   
+    
+    const checkBoxes = document.querySelectorAll('.inter-box')
+    checkBoxes.forEach( checkBox => {
+        checkBox.addEventListener('click', function(event) {
+            const cateId = event.target.dataset.id
+            axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+            axios.defaults.xsrfCookieName = 'csrftoken'
+            axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
+            axios.post(`/accounts/${cateId}/edit-cate/`)
+        })
+    })
+</script>
+{% endblock %}
