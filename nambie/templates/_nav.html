@@ -1,30 +1,39 @@
 {% load bootstrap4 %}
-<nav class="navbar fixed-top navbar-expand-lg navbar-light b">
-  <a class="navbar-brand" href="{% url "accounts:index" %}">
-    <img style="display: inline; padding-bottom: 10px;" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDQxMC41NjcgNDEwLjU2NyIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNDEwLjU2NyA0MTAuNTY3IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4Ij4KICA8cGF0aCBkPSJtMzUzLjkzOCwxNy4wNzJjLTMuOTA1LTMuOTA1LTMuOTA1LTEwLjIzNyAwLTE0LjE0MiAzLjkwNi0zLjkwNiAxMC4yMzYtMy45MDYgMTQuMTQzLDBsMS4zNDUsMS4zNDRjMy45MDUsMy45MDUgMy45MDUsMTAuMjM3IDAsMTQuMTQyLTEuOTUzLDEuOTUzLTQuNTEyLDIuOTI5LTcuMDcxLDIuOTI5cy01LjExOC0wLjk3Ni03LjA3MS0yLjkyOWwtMS4zNDYtMS4zNDR6bS0xLjM0NSwxMTEuMzU1YzE1Ljk0NywwIDI4LjkyMiwxMi45NzQgMjguOTIyLDI4Ljkycy0xMi45NzUsMjguOTItMjguOTIyLDI4LjkyLTI4LjkyMS0xMi45NzQtMjguOTIxLTI4LjkyIDEyLjk3NC0yOC45MiAyOC45MjEtMjguOTJ6bTAsMjBjLTQuOTE5LDAtOC45MjEsNC4wMDItOC45MjEsOC45MiAwLDQuOTE5IDQuMDAyLDguOTIgOC45MjEsOC45MiA0LjkyLDAgOC45MjItNC4wMDEgOC45MjItOC45Mi01LjY4NDM0ZS0xNC00LjkxOC00LjAwMi04LjkyLTguOTIyLTguOTJ6bTQ1LjMxMiwxMjQuOTE0djExLjk5YzAsMTUuNjIyLTEyLjcwOSwyOC4zMzEtMjguMzMsMjguMzMxaC04LjMzMnY1My45MTVjMCwyMy43MDUtMTkuMjg1LDQyLjk5LTQyLjk5LDQyLjk5aC0yMjUuOTM4Yy0yMy43MDQsMC00Mi45ODktMTkuMjg1LTQyLjk4OS00Mi45OXYtNTMuOTE1aC04LjMzMmMtMTUuNjIyLDAtMjguMzMxLTEyLjcwOS0yOC4zMzEtMjguMzMxdi0xMS45OWMwLTE1LjYyMiAxMi43MDktMjguMzMxIDI4LjMzMS0yOC4zMzFoOC4zMzJ2LTI5LjU1MWMwLTUuNTIzIDQuNDc4LTEwIDEwLTEwaDI5MS45MTdjNS41MjIsMCAxMCw0LjQ3NyAxMCwxMHYyOS41NTFoOC4zMzJjMTUuNjIxLTIuODQyMTdlLTE0IDI4LjMzLDEyLjcwOSAyOC4zMywyOC4zMzF6bS0zNDguNTgtOC4zMzFoLTguMzMyYy00LjU5NCwwLTguMzMxLDMuNzM3LTguMzMxLDguMzMxdjExLjk5YzAsNC41OTQgMy43MzcsOC4zMzEgOC4zMzEsOC4zMzFoOC4zMzJ2LTI4LjY1MnptMjkxLjkxNy0zOS41NTFoLTI3MS45MTd2MTQyLjExOGMxLjQyMTA5ZS0xNCwxMi42NzcgMTAuMzEzLDIyLjk5IDIyLjk4OSwyMi45OWgyMjUuOTM4YzEyLjY3NywwIDIyLjk5LTEwLjMxMyAyMi45OS0yMi45OXYtMTQyLjExOHptMzYuNjYzLDQ3Ljg4MmMwLTQuNTk0LTMuNzM3LTguMzMxLTguMzMtOC4zMzFoLTguMzMydjI4LjY1Mmg4LjMzMmM0LjU5MywwIDguMzMtMy43MzcgOC4zMy04LjMzMXYtMTEuOTl6bS01MS42NjMtMTkzLjE5M2MyLjU1OCwwIDUuMTE2LTAuOTc2IDcuMDY4LTIuOTI2bDEuMzQ2LTEuMzQ1YzMuOTA3LTMuOTA0IDMuOTA5LTEwLjIzNSAwLjAwNS0xNC4xNDItMy45MDItMy45MDgtMTAuMjM1LTMuOTA5LTE0LjE0Mi0wLjAwNWwtMS4zNDYsMS4zNDVjLTMuOTA3LDMuOTA0LTMuOTA5LDEwLjIzNS0wLjAwNSwxNC4xNDIgMS45NTMsMS45NTQgNC41MTQsMi45MzEgNy4wNzQsMi45MzF6bS04Mi44ODYsMTA1LjUzOWMwLDUuNTIzIDQuNDc4LDEwIDEwLDEwczEwLTQuNDc3IDEwLTEwYzAtNy44OTkgNi40MjctMTQuMzI2IDE0LjMyNS0xNC4zMjYgNy44OTksMCAxNC4zMjYsNi40MjcgMTQuMzI2LDE0LjMyNiAwLDUuNTIzIDQuNDc4LDEwIDEwLDEwczEwLTQuNDc3IDEwLTEwYzAtMTguOTI3LTE1LjM5OC0zNC4zMjYtMzQuMzI2LTM0LjMyNi0xOC45MjctMi44NDIxN2UtMTQtMzQuMzI1LDE1LjM5OC0zNC4zMjUsMzQuMzI2em0tMTg2Ljc3Ni0xNC45NjhjLTEuMjcxLTUuMzc1IDIuMDU2LTEwLjc2MiA3LjQzMS0xMi4wMzNsMTA4LjYzNi0yNS42ODUtMS45MTYtOC4xMDljLTMuNTk0LTE1LjIwMyA1Ljg1MS0zMC40OTUgMjEuMDUzLTM0LjA4OGwxMS42NjgtMi43NThjMTUuMTk3LTMuNTk0IDMwLjQ5NCw1Ljg0OSAzNC4wODksMjEuMDUxbDEuOTE4LDguMTA5IDEwOC42MzUtMjUuNjg2YzUuMzczLTEuMjY5IDEwLjc2MiwyLjA1NiAxMi4wMzIsNy40MzEgMS4yNzEsNS4zNzUtMi4wNTYsMTAuNzYyLTcuNDMxLDEyLjAzM2wtMjg0LjA4Miw2Ny4xNjZjLTAuNzczLDAuMTgzLTEuNTQ4LDAuMjcxLTIuMzEsMC4yNzEtNC41My0wLjAwMS04LjYzNS0zLjEwMS05LjcyMy03LjcwMnptMTMzLjYxNC01MC40MjhsMS45MTcsOC4xMDggMjcuODg0LTYuNTkzLTEuOTE3LTguMTA4Yy0wLjkwNS0zLjgyOC00LjMzNC02LjQxNS04LjEwNy02LjQxNS0wLjYzMywwLTEuMjc0LDAuMDczLTEuOTE3LDAuMjI0bC0xMS42NjgsMi43NTljLTQuNDcyLDEuMDU4LTcuMjQ5LDUuNTU0LTYuMTkyLDEwLjAyNXoiIGZpbGw9IiMwMDAwMDAiLz4KPC9zdmc+Cg==" />
-    냄비탈출
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url "accounts:per_edit" %}">나의 관심 수정<span class="sr-only">(current)</span></a>
-      </li>
-      {% if request.user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url "accounts:logout" %}">로그 아웃</a>
-        </li>
-      {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url "accounts:login" %}">로그인</a>
-        </li>
-      {% endif %}
-      <li class="nav-item">
-        <a class="nav-link" href="{% url "calendar:calendar" %}">캘린더</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean');
+body, my-font {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+}
+
+ </style>
+
+ <nav class="navbar navbar-expand-lg p-2 bg-white font-weight-bold text-uppercase fixed-top" id="mainNav">
+   <div class="container">
+     <a class="navbar-brand my-font text-dark js-scroll-trigger font-weight-bold" href="#page-top">냄비탈출 넘버원 </a>
+     <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-dark rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+       Menu
+       <i class="fas fa-bars"></i>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarResponsive">
+       <ul class="navbar-nav ml-auto" style="font-size: 1.3rem;">
+         <li class="nav-item mx-0 mx-lg-1">
+           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-dark " href="{% url 'accounts:per_edit' %}">관심 사항 수정</a>
+         </li>
+         {% if request.user.is_authenticated %}
+         <li class="nav-item mx-0 mx-lg-1">
+           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-dark" href="{% url 'accounts:logout' %}">로그아웃</a>
+         </li>
+         {% else %}
+         <li class="nav-item mx-0 mx-lg-1">
+           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-dark " href="{% url 'accounts:login' %}">로그인</a>
+         </li>
+         {% endif %}
+         <li class="nav-item mx-0 mx-lg-1">
+           <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-dark " href="{% url 'calendar:calendar' %}">캘린더</a>
+         </li>
+       </ul>
+     </div>
+   </div>
+ </nav>
