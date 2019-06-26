@@ -16,7 +16,7 @@ import json
 
 from django.conf import settings
 import requests
-bot_token = settings.TELEGRAM_BOT_TOKEN
+
 
 def my_calendar(request, month = None):
     if month:

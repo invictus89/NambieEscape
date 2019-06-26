@@ -2,23 +2,69 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
-from django.http import JsonResponse, HttpResponseBadRequest
+from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse
 from django.contrib.auth import update_session_auth_hash, get_user_model
 from django.conf import settings
-
+from django.views.decorators.csrf import csrf_exempt
+from pprint import pprint
 from django_telegram_login.widgets.constants import LARGE, DISABLE_USER_PHOTO
 from django_telegram_login.widgets.generator import create_redirect_login_widget, create_redirect_login_widget
 from django_telegram_login.authentication import verify_telegram_authentication
 from django_telegram_login.errors import NotTelegramDataError, TelegramDataIsOutdatedError
-
+import json
 from .models import User
-from news.models import Category
+from news.models import Category, Keyword, KeyNews, RankNews
 
+from datetime import datetime
 import requests
 
 bot_name = settings.TELEGRAM_BOT_NAME
 bot_token = settings.TELEGRAM_BOT_TOKEN
 redirect_url = settings.TELEGRAM_LOGIN_REDIRECT_URL
+
+api_url = f'https://api.telegram.org/bot{bot_token}/'
+webhook_url = 'https://78ca0ad2.ngrok.io/accounts/'
+my_url = f'{api_url}/setWebhook?url={webhook_url}/'
+
+
+domain = '78ca0ad2.ngrok.io/accounts/intro/'
+invitemgs = f'I hope you to join our Webpage\n{domain}'
+
+@csrf_exempt
+def telegram(request, token):
+    body = request.body.decode('utf8').replace("'", '"')
+    data = json.loads(body)
+    msg = data.get('message')
+    id = msg.get('from').get('id')
+    text = msg.get('text')
+    user = User.objects.filter(tel_id=id)
+    if user.exists():
+        msg=''
+        if text=='today' or text=='오늘':
+            d = datetime.today()
+            month = d.month
+            day = d.day
+        elif len(text)==5:
+            print(len(text))
+            [month, day]=text.split('/')
+            try:
+                month = int(text[0:2])
+                day = int(text[3:5])
+            except:
+                pass
+        try:
+            events = user.first().event_set.filter(uploaded_at__month=month, uploaded_at__day=day)
+            length = len(events)
+            if length==0:
+                msg+=f'{text}은 아무런 일정이 없습니다.'
+            for event in events:
+                msg = msg + f'{event.title}({event.uploaded_at.year}), '
+        except:
+            msg="ex) '06/26' 혹은 '오늘' 의 형태로 입력해 주세요."
+    else:
+        msg=invitemgs
+    requests.get(f'https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={id}&text={msg}')
+    return HttpResponse(status=200)
 
 def index(request):
     context = {
@@ -97,3 +143,4 @@ def get_wiget():
         # user_photo = DISABLE_USER_PHOTO
     )
     return telegram_login_widget
+

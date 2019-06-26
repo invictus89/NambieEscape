@@ -19,7 +19,6 @@ class Keyword(models.Model):
 
 class KeyNews(models.Model):
     title = models.TextField()
-    content = models.TextField()
     url = models.TextField()
     date = models.IntegerField()
     keyword = models.ForeignKey(Keyword, on_delete = models.CASCADE)
