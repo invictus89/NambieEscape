@@ -77,14 +77,14 @@ def telegram(request, token):
                     today_news = random.sample(today_list,1)
                     msg += f' - 오늘: {today_news[0].title}\n'    
 
-                    for _ in range(2):
-                        ranknewses = list(category.ranknews_set.filter(date=date))
-                        l=len(ranknewses)
-                        if l>=0:
-                            ranknewses = random.sample(ranknewses,2)
-                            for ranknews in ranknewses:
-                                msg = msg+f' -  {int(date/10000)}년 오늘: {ranknews.title}\n'
-                        date -= 10000
+                for _ in range(2):
+                    ranknewses = list(category.ranknews_set.filter(date=date))
+                    l=len(ranknewses)
+                    if l>=0:
+                        ranknewses = random.sample(ranknewses,2)
+                        for ranknews in ranknewses:
+                            msg = msg+f' -  {int(date/10000)}년 오늘: {ranknews.title}\n'
+                    date -= 10000
 
                     
             else :
