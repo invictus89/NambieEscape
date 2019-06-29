@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block style %}
+{% endblock style %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>{{request.user}}님 접속중.</p>
+        <a href="{% url "accounts:logout" %}">로그아웃</a>
+        <a href="{% url "accounts:per_edit" %}">개인정보 수정</a>
+    {% else %}
+        <a href="{% url "accounts:login" %}">로그인</a>
+    {% endif %}
+{% endblock content %}
