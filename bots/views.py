@@ -25,7 +25,7 @@ def telegram(request, token):
     id = msg.get('from').get('id')
     text = msg.get('text')
     user = User.objects.filter(tel_id=id)
-    
+    msg += f'메롱!!!!'
     if user.exists():
         user = user.first()
         categorys = user.inter_cate.all()
