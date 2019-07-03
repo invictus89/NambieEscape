@@ -1,0 +1,89 @@
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+}
+
+.calendar tr, .calendar td {
+  border:#dadce0 1px solid;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+  max-width: 0;
+}
+
+.month {
+  font-size: 20px;
+}
+
+.date {
+  font-size: small;
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 5px;
+  list-style: none;
+}
+
+a {
+  color: #17a2b8;
+}
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btn {
+  outline: none;
+  color: black;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+}
+
+.clearfix {
+  margin: 15px;
+}
+
+.curInfo td, .allInfo td {
+  height:2.2rem;
+  max-width: 10rem;
+}
+.modal-header .close {
+    padding: 1rem;
+    margin: -1rem -1rem -1rem;
+}
+
+.my-day {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  width: 100%;
+  border-radius: 0.3rem;
+}
+
+.detail-type {
+  white-space: nowrap;
+  display: inline-block;
+  border-radius: 0.3rem;
+}
+.detail-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  width: 100%;
+}
