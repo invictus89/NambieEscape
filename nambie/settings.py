@@ -25,10 +25,10 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] # 'https://5cd5ee8a.ngrok.io'
 
-TELEGRAM_BOT_NAME = 'NambieBot' # 'django_telegram_login_bot'
-TELEGRAM_BOT_TOKEN = '882635514:AAGU-Ian51dQAUP9W7WQAdL3dvEHQIn973Y'
+TELEGRAM_BOT_NAME = 'NambieBot'
+TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN')
 TELEGRAM_LOGIN_REDIRECT_URL = '' # 'http://127.0.0.1:8000'
 
 # Application definition

@@ -1,1 +1,1 @@
-https://api.telegram.org/bot617081935:AAECEcav6WugCo39g4MUTUgFYU0rYIMT4gI/SetWebhook?url=https://365b6d7e.ngrok.io/accounts/617081935:AAECEcav6WugCo39g4MUTUgFYU0rYIMT4gI/telegram/
+https://api.telegram.org/bot882635514:AAGU-Ian51dQAUP9W7WQAdL3dvEHQIn973Y/SetWebhook?url=https://nambie.herokuapp.com/bots/882635514:AAGU-Ian51dQAUP9W7WQAdL3dvEHQIn973Y/telegram/

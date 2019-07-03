@@ -8,5 +8,4 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('per-edit/', views.per_edit, name='per_edit'),
     path('<int:category_pk>/edit-cate/', views.edit_cate, name='edit_cate'),
-    path('<token>/telegram/', views.telegram, name='telegram'),
 ]

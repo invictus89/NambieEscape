@@ -3,6 +3,5 @@ from . import views
 
 app_name = 'bots'
 urlpatterns = [
-    path('telegram/<token>/', views.telegram, name='telegram'),
-    path('<token>/', views.telegram, name='telegram'),
+    path('<token>/telegram/', views.telegram, name='telegram'),
 ]
