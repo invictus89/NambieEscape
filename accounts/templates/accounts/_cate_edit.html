@@ -25,7 +25,7 @@
             axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
             axios.defaults.xsrfCookieName = 'csrftoken'
             axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN'
-            axios.post(`/accounts/${cateId}/edit-cate/`)
+            axios.post(`/accounts/${cateId}/edit-cate/`).then(result => console.log(result))
         })
     })
 </script>

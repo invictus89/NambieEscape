@@ -78,11 +78,12 @@ def edit_cate(request, category_pk):
     if request.is_ajax():
         category = get_object_or_404(Category, pk=category_pk)
         user = request.user
+        print(user)
         if category.inter_users.filter(pk=user.pk).exists():
             category.inter_users.remove(user)
         else:
             category.inter_users.add(user)
-        return JsonResponse()
+        return JsonResponse({})
     return HttpResponseBadRequest()
 
 
