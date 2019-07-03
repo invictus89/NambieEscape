@@ -25,11 +25,10 @@ def telegram(request, token):
     id = msg.get('from').get('id')
     text = msg.get('text')
     user = User.objects.filter(tel_id=id)
-    msg += f'메롱!!!!'
     if user.exists():
         user = user.first()
         categorys = user.inter_cate.all()
-        msg=''
+        msg='메롱메롱'
         if text=='소식' or text=='news' or text=='뉴스':
             msg+=f'◎ 키워드 뉴스\n{user.last_name} {user.first_name}님이 선택하신 카테고리는 '
             for category in categorys:
