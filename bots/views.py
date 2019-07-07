@@ -12,7 +12,7 @@ bot_name = settings.TELEGRAM_BOT_NAME
 bot_token = settings.TELEGRAM_BOT_TOKEN
 redirect_url = settings.TELEGRAM_LOGIN_REDIRECT_URL
 
-domain = 'https://nambie.herokuapp.com/accounts/' # 'nambie.herokuapp.com/accounts/' # https://5cd5ee8a.ngrok.io/accounts/
+domain = 'https://nambie.herokuapp.com/accounts/' # 'nambie.herokuapp.com/accounts/' # https://fa04361f.ngrok.io/accounts/
 invitemgs = f'아래의 사이트에 접속하여 회원 정보를 등록해주세요.\n{domain}'
 
 d = datetime.today()
@@ -21,10 +21,11 @@ d = datetime.today()
 def telegram(request, token):
     body = request.body.decode('utf8').replace("'", '"')
     data = json.loads(body)
-    msg = data.get('message')
-    id = msg.get('from').get('id')
-    text = msg.get('text')
+    message = data.get('message')
+    id = message.get('from').get('id')
+    text = message.get('text')
     user = User.objects.filter(tel_id=id)
+    msg = ''
     if user.exists():
         user = user.first()
         categorys = user.inter_cate.all()
@@ -35,7 +36,7 @@ def telegram(request, token):
 
             msg+='입니다.\n도움이 필요하시면 /help를 입력해 주세요~\n\n<뉴스>\n'
             msg+=f'({user.last_name} {user.first_name})님의 선택하신\n'
-            date = d.year*10000 + d.month*100 + d.day -1
+            date = 2019*10000 + 6*100 + 27-1
             for category in categorys:
                 keywords = category.keyword_set.all()
                 msg+=f'\n[{category.name}]\n'

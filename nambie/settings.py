@@ -25,7 +25,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [] # 'https://5cd5ee8a.ngrok.io'
+ALLOWED_HOSTS = [] # 'https://fa04361f.ngrok.io'
 
 TELEGRAM_BOT_NAME = 'NambieBot'
 TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN')
