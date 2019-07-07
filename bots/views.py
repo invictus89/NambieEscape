@@ -52,7 +52,7 @@ def telegram(request, token):
                 year = d.year
                 month = d.month
                 day = d.day
-                msg+=f'\n{year}.{month}.{day} 오늘의 냄비소식입니다.\n\n'
+                msg+=f'\n* 2019.06.27 오늘의 냄비소식입니다. *\n\n'
                 for category in categorys:
                     date = (2019-1)*10000 + 6*100 + 27 -1
                     today_date = (2019-1)*10000 + 6*100 + 27 -1
@@ -61,16 +61,16 @@ def telegram(request, token):
                         msg += f'오늘 날짜의 이슈가 되었던 [{category.name}] 소식이 없습니다.\n\n'
                         continue
                     else:
-                        msg+=f'{month}월{day}일에 이슈가 되었던 [{category.name}] 소식입니다.\n\n'
+                        msg+=f'\n* 06월 27일에 이슈가 되었던 [{category.name}] 소식입니다. *\n\n'
                         today_news = random.sample(today_list,1)
-                        msg += f' - 오늘: {today_news[0].title}\n'    
+                        msg += f' - 오늘 : {today_news[0].title}\n'    
                         for _ in range(2):
                             ranknewses = list(category.ranknews_set.filter(date=date))
                             l=len(ranknewses)
                             if l>0:
                                 ranknewses = random.sample(ranknewses,2)
                                 for ranknews in ranknewses:
-                                    msg = msg+f' -  {int(date/10000)}년 오늘: {ranknews.title}\n'
+                                    msg = msg+f' -  {int(date/10000)}년 오늘 : {ranknews.title}\n'
                                 date -= 10000
                             else:
                                 msg = msg+f' -  {int(date/10000)}년 오늘의 데이터가 없습니다.\n'     
