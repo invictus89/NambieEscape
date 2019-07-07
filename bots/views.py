@@ -86,7 +86,7 @@ def telegram(request, token):
                 events = user.event_set.filter(uploaded_at__month=6, uploaded_at__day=27)
                 length = len(events)
                 msg += "\n----------\n"                
-                msg+='\n* 나만의 냄비 소식 입니다. \n'
+                msg+='* 나만의 냄비 소식 입니다. \n'
                 msg+=f'--------------------------\n'
                 if length==0:
                     msg+=f'오늘은 아무런 일정이 없습니다.'
