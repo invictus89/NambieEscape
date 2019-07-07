@@ -34,12 +34,11 @@ def telegram(request, token):
             for category in categorys:
                 msg+=f'[{category.name}] '
 
-            msg+='입니다.\n도움이 필요하시면 /help를 입력해 주세요~\n\n<뉴스>\n'
-            msg+=f'({user.last_name} {user.first_name})님의 선택하신\n'
+            msg+='입니다.\n도움이 필요하시면 /help를 입력해 주세요.\n\n'
             date = 2019*10000 + 6*100 + 27-1
             for category in categorys:
                 keywords = category.keyword_set.all()
-                msg+=f'\n[{category.name}]\n'
+                msg+=f'\n [{category.name}]\n'
                 for keyword in keywords:
                     keynewses = keyword.keynews_set.all()
                     if keynewses.exists() and keynewses.first().date==date:
@@ -52,7 +51,7 @@ def telegram(request, token):
                 year = d.year
                 month = d.month
                 day = d.day
-                msg+=f'\n* 2019.06.27 오늘의 냄비소식입니다. *\n\n'
+                msg+=f'\n\n* 2019.06.27 오늘의 냄비소식입니다. *\n\n'
                 for category in categorys:
                     date = (2019-1)*10000 + 6*100 + 27 -1
                     today_date = (2019-1)*10000 + 6*100 + 27 -1
@@ -61,7 +60,8 @@ def telegram(request, token):
                         msg += f'오늘 날짜의 이슈가 되었던 [{category.name}] 소식이 없습니다.\n\n'
                         continue
                     else:
-                        msg+=f'\n* 06월 27일에 이슈가 되었던 [{category.name}] 소식입니다. *\n\n'
+                        msg+=f'\n* 06월 27일에 이슈가 되었던 [{category.name}] 소식입니다. *\n'
+                        msg+=f'---------------------------------------------------\n\n'
                         today_news = random.sample(today_list,1)
                         msg += f' - 오늘 : {today_news[0].title}\n'    
                         for _ in range(2):
@@ -84,7 +84,8 @@ def telegram(request, token):
             try:
                 events = user.event_set.filter(uploaded_at__month=6, uploaded_at__day=27)
                 length = len(events)
-                msg+='* 나만의 냄비 소식 입니다. * \n'
+                msg+='\n* 나만의 냄비 소식 입니다. * \n'
+                msg+=f'--------------------------\n\n'
                 if length==0:
                     msg+=f'오늘은 아무런 일정이 없습니다.'
                 for event in events:
