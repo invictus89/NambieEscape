@@ -54,8 +54,8 @@ def telegram(request, token):
                 day = d.day
                 msg+=f'\n{year}.{month}.{day} 오늘의 냄비소식입니다.\n\n'
                 for category in categorys:
-                    date = (d.year-1)*10000 + d.month*100 + d.day -1
-                    today_date = (d.year)*10000 + d.month*100 + d.day -1
+                    date = (2019-1)*10000 + 6*100 + 27 -1
+                    today_date = (2019-1)*10000 + 6*100 + 27 -1
                     today_list = list(category.ranknews_set.filter(date=today_date))
                     if len(today_list) == 0:
                         msg += f'오늘 날짜의 이슈가 되었던 [{category.name}] 소식이 없습니다.\n\n'
@@ -90,7 +90,7 @@ def telegram(request, token):
                 for event in events:
                     msg = msg + f' - {event.title}({event.uploaded_at.year})\n'
             except:
-                msg="ex) '06/26'의 형식 혹은 '오늘', '뉴스' 으로 입력해 주세요."
+                msg="ex) '06/26'의 형식 혹은 '오늘(today)', '뉴스(news)' 으로 입력해 주세요."
     else:
         msg=invitemgs
     requests.get(f'https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={id}&text={msg}')
