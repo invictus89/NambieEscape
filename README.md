@@ -106,11 +106,11 @@
 
    - 기념일 / 뉴스 / 역사 / 사건사고 카테고리로 기억하고 싶은 이슈 등록
 
-     <img src="./git_images/4-1.insert.PNG" width="65%"></img>
+     <img src="./git_images/4-1.insert.PNG" width="80%"></img>
 
    - 등록된 이슈는 카테고리 별 색상을 달리하여 직관적으로 정보 제공
 
-     <img src="./git_images/4-2.list.PNG" width="65%"></img>
+     <img src="./git_images/4-2.list.PNG" width="80%"></img>
 
    - 등록된 제목 길이가 너무 길 경우 일부 내용만 표기하고, 등록된 정보가 많을 경우 '...' 으로 표시
 
@@ -120,11 +120,13 @@
 
    - 년도와 상관 없이 월/일로 등록한 개인 이슈 확인
 
-     <img src="./git_images/4-3.detailed.PNG" width="65%"></img>
+     <img src="./git_images/4-3.detailed.PNG" width="80%"></img>
 
    - 텔레그램 봇과 연동
+   
+     '오늘(today)'로 입력 시 챗봇 메시지 하단에 나만의 냄비 소식 출력
 
-     <img src="./git_images/4-4.bot.PNG" width="65%"></img>
+     <img src="./git_images/4-4.bot.PNG" width="80%"></img>
 
    - 이슈 등록은 비동기식 구현을 위해 json 데이터 형식과 axios 기능 활용
 
