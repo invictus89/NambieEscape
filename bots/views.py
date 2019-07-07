@@ -82,7 +82,7 @@ def telegram(request, token):
                 except:
                     pass
             try:
-                events = user.event_set.filter(uploaded_at__month=month, uploaded_at__day=day)
+                events = user.event_set.filter(uploaded_at__month=6, uploaded_at__day=27)
                 length = len(events)
                 msg+='* 나만의 냄비 소식 입니다. * \n'
                 if length==0:
